@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Education from './components/Education';
-import Achievements from './components/Achievements';
-import Resume from './components/Resume';
-import Contact from './components/Contact';
+import Home from './components/Home';
+import ProjectDetails from './components/ProjectDetails';
 import Preloader from './components/Preloader';
 import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
 import './index.css';
+
+// ScrollToTop component to ensure pages start at top
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -25,7 +28,8 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
+      <ScrollToTop />
       <AnimatePresence mode='wait'>
         {loading && <Preloader key="preloader" />}
       </AnimatePresence>
@@ -36,20 +40,16 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          style={{ background: 'var(--bg-dark)', minHeight: '100vh' }}
+          style={{ background: 'var(--bg-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
         >
           <Navbar />
 
-          <main>
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            <Education />
-            <Achievements />
-            <Resume />
-            <Contact />
-          </main>
+          <div style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/project/:id" element={<ProjectDetails />} />
+            </Routes>
+          </div>
 
           <footer style={{
             padding: '3rem 0',
@@ -69,7 +69,7 @@ function App() {
           </footer>
         </motion.div>
       )}
-    </>
+    </Router>
   );
 }
 
