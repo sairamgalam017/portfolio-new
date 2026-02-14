@@ -34,13 +34,13 @@ const Education = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="section-title">Education</h2>
-                    <div style={{ position: 'relative', paddingLeft: '2rem', borderLeft: '2px solid var(--border-color)' }}>
+                    <div style={{ position: 'relative', paddingLeft: 'clamp(1rem, 5vw, 2rem)', borderLeft: '2px solid var(--border-color)' }}>
                         {education.map((edu, index) => (
                             <motion.div
                                 key={index}
                                 whileHover={{ x: 5 }}
                                 className="card"
-                                style={{ padding: '2rem', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--primary)' }}
+                                style={{ padding: 'clamp(1rem, 3vw, 2rem)', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--primary)' }}
                             >
                                 <div style={{
                                     position: 'absolute',

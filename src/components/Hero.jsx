@@ -28,7 +28,7 @@ const Hero = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: '4rem',
+                gap: 'clamp(2rem, 5vw, 4rem)',
                 zIndex: 10,
                 position: 'relative',
                 flexWrap: 'wrap-reverse'
@@ -133,9 +133,9 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', position: 'relative' }}
+                    style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center', position: 'relative' }}
                 >
-                    <div style={{ position: 'relative', width: '400px', height: '450px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '1/1.125', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         {/* Abstract Tech Shapes behind */}
                         <div style={{
                             position: 'absolute',
@@ -156,8 +156,8 @@ const Hero = () => {
 
                         {/* Image Container */}
                         <div style={{
-                            width: '320px',
-                            height: '380px',
+                            width: '80%',
+                            height: '85%',
                             background: 'var(--bg-card)',
                             clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)', // Hexagon
                             position: 'relative',

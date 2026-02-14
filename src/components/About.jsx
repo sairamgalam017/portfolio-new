@@ -19,7 +19,7 @@ const About = () => {
                         margin: '0 auto',
                         textAlign: 'center',
                         background: 'var(--bg-card)',
-                        padding: '3rem',
+                        padding: 'clamp(1.5rem, 5vw, 3rem)',
                         borderRadius: '24px',
                         border: '1px solid var(--border-color)',
                         position: 'relative',
@@ -42,8 +42,8 @@ const About = () => {
                         </p>
                     </div>
                 </motion.div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 

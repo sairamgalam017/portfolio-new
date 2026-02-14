@@ -206,3 +206,19 @@ section {
   position: relative;
   z-index: 1;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  :root {
+    --spacing-section: 4rem;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
