@@ -102,6 +102,34 @@ const Education = () => {
                                 Observed the fractionation and distillation processes in fatty acid production. Gained insights into the captive biomass cogeneration power plant operations and electrical distribution systems within the industry.
                             </p>
                         </motion.div>
+
+                        <h3 style={{ marginTop: '3rem', marginBottom: '1.5rem', fontSize: '1.5rem', color: 'var(--text-primary)' }}>Experience</h3>
+
+                        <motion.div
+                            whileHover={{ x: 5 }}
+                            className="card"
+                            style={{ padding: '2rem', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--primary)' }}
+                        >
+                            <div style={{
+                                position: 'absolute',
+                                top: '2rem',
+                                left: '-2.6rem', // align with vertical line
+                                width: '1rem',
+                                height: '1rem',
+                                background: 'var(--primary)',
+                                borderRadius: '50%',
+                                border: '2px solid var(--bg-dark)'
+                            }} ></div>
+
+                            <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Internship Experience</h4>
+                            <div style={{ width: '100%', marginBottom: '1rem', borderRadius: '8px', overflow: 'hidden' }}>
+                                <img
+                                    src="/certificates/experience-certificate.jpeg"
+                                    alt="Experience Certificate"
+                                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                                />
+                            </div>
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>
