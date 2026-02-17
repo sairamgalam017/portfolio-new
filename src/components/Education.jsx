@@ -1,32 +1,65 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { GraduationCap, Building, Briefcase } from 'lucide-react';
 import TechElement from './TechElement';
 
-const education = [
+const educationData = [
     {
+        title: 'B.Tech in EEE',
         institution: 'Andhra Loyola Institute of Engineering and Technology',
-        degree: 'B.Tech in Electrical and Electronics Engineering (EEE)',
-        year: '2024 - 2027',
-        grade: 'Pursuing'
+        period: '2024 - 2027',
+        grade: 'Pursuing',
+        icon: <GraduationCap color="#64ffda" />,
+        color: '#64ffda',
+        hasTechElement: true
     },
     {
+        title: 'Diploma in EEE',
         institution: 'Usharama College of Engineering and Technology',
-        degree: 'Diploma in Electrical and Electronics Engineering',
-        year: '2021 - 2024',
-        grade: 'Top 1 in all 3 years'
+        period: '2021 - 2024',
+        grade: 'Top 1 in all 3 years',
+        icon: <GraduationCap color="#f59e0b" />,
+        color: '#f59e0b',
+        hasTechElement: true
     },
     {
+        title: 'SSC',
         institution: 'Z.P.H. SCHOOL, NIDAMANURU',
-        degree: 'SSC',
-        year: 'Completed',
-        grade: 'Satisfactory'
+        period: 'Completed',
+        grade: 'Satisfactory',
+        icon: <GraduationCap color="#ec4899" />,
+        color: '#ec4899',
+        hasTechElement: false
+    }
+];
+
+const experienceData = [
+    {
+        title: 'Industrial Visit',
+        institution: 'Jocil Limited',
+        period: 'Dokiparru, Guntur',
+        description: 'Observed fractionation and distillation processes in fatty acid production.',
+        icon: <Building color="#3b82f6" />,
+        color: '#3b82f6',
+        image: '/industrial-visit.jpeg'
+    },
+    {
+        title: 'Internship Experience',
+        institution: 'Internship',
+        period: 'Recent',
+        description: 'Gained practical experience in the field.',
+        icon: <Briefcase color="#10b981" />,
+        color: '#10b981',
+        image: '/certificates/experience-certificate.jpeg'
     }
 ];
 
 const Education = () => {
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
     return (
-        <section id="education" style={{ padding: '6rem 0' }}>
-            <div className="container" style={{ maxWidth: '800px' }}>
+        <section id="education" style={{ padding: '6rem 0', background: 'var(--bg-card)' }}>
+            <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -34,102 +67,92 @@ const Education = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="section-title">Education</h2>
-                    <div style={{ position: 'relative', paddingLeft: 'clamp(1rem, 5vw, 2rem)', borderLeft: '2px solid var(--border-color)' }}>
-                        {education.map((edu, index) => (
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+                        {educationData.map((item, index) => (
                             <motion.div
                                 key={index}
-                                whileHover={{ x: 5 }}
+                                whileHover={{ scale: 1.05 }}
                                 className="card"
-                                style={{ padding: 'clamp(1rem, 3vw, 2rem)', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--primary)' }}
+                                style={{ textAlign: 'center', padding: '2rem', position: 'relative', overflow: 'hidden', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}
                             >
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '2rem',
-                                    left: '-2.6rem', // align with vertical line
-                                    width: '1rem',
-                                    height: '1rem',
-                                    background: 'var(--primary)',
-                                    borderRadius: '50%',
-                                    border: '2px solid var(--bg-dark)'
-                                }} ></div>
-
-                                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{edu.institution}</h3>
-                                <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>{edu.degree}</p>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                                    <span>{edu.year}</span>
-                                    <span>{edu.grade}</span>
+                                <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
+                                    {React.cloneElement(item.icon, { size: 48 })}
                                 </div>
-                                {(edu.degree.includes('EEE') || edu.degree.includes('Electrical')) && (
-                                    <div style={{ marginTop: '1rem', width: '100%' }}>
+                                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{item.title}</h3>
+                                <p style={{ color: item.color, marginBottom: '0.5rem', fontWeight: '500' }}>{item.institution}</p>
+                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                    <p>{item.period}</p>
+                                    <p>{item.grade}</p>
+                                </div>
+                                {item.hasTechElement && (
+                                    <div style={{ marginTop: '1rem', width: '100%', minHeight: '150px' }}>
                                         <TechElement />
                                     </div>
                                 )}
                             </motion.div>
                         ))}
+                    </div>
 
-                        <h3 style={{ marginTop: '3rem', marginBottom: '1.5rem', fontSize: '1.5rem', color: 'var(--text-primary)' }}>Industrial Visits</h3>
+                    <h2 className="section-title">Experience & Visits</h2>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                        {experienceData.map((item, index) => (
+                            <motion.div
+                                key={index}
+                                whileHover={{ scale: 1.05 }}
+                                onMouseEnter={() => setHoveredIndex(index)}
+                                onMouseLeave={() => setHoveredIndex(null)}
+                                className="card"
+                                style={{ textAlign: 'center', padding: '2rem', position: 'relative', overflow: 'hidden', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}
+                            >
+                                <div style={{ opacity: (hoveredIndex === index && item.image) ? 0 : 1, transition: 'opacity 0.3s' }}>
+                                    <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
+                                        {React.cloneElement(item.icon, { size: 48 })}
+                                    </div>
+                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{item.title}</h3>
+                                    <p style={{ color: item.color, marginBottom: '0.5rem', fontWeight: '500' }}>{item.institution}</p>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{item.period}</p>
+                                    <p style={{ color: 'var(--text-secondary)' }}>{item.description}</p>
+                                </div>
 
-                        <motion.div
-                            whileHover={{ x: 5 }}
-                            className="card"
-                            style={{ padding: '2rem', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--secondary)' }}
-                        >
-                            <div style={{
-                                position: 'absolute',
-                                top: '2rem',
-                                left: '-2.6rem', // align with vertical line
-                                width: '1rem',
-                                height: '1rem',
-                                background: 'var(--secondary)',
-                                borderRadius: '50%',
-                                border: '2px solid var(--bg-dark)'
-                            }} ></div>
-
-                            <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Jocil Limited</h4>
-                            <p style={{ color: 'var(--secondary)', marginBottom: '1rem', fontWeight: '500' }}>Dokiparru, Guntur</p>
-                            <div style={{ width: '100%', height: '250px', marginBottom: '1rem', borderRadius: '8px', overflow: 'hidden' }}>
-                                <img
-                                    src="/industrial-visit.jpeg"
-                                    alt="Jocil Limited Visit"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = "https://images.unsplash.com/photo-1565452396328-912557438139?auto=format&fit=crop&q=80&w=1000";
-                                    }}
-                                />
-                            </div>
-                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                                Observed the fractionation and distillation processes in fatty acid production. Gained insights into the captive biomass cogeneration power plant operations and electrical distribution systems within the industry.
-                            </p>
-                        </motion.div>
-
-                        <h3 style={{ marginTop: '3rem', marginBottom: '1.5rem', fontSize: '1.5rem', color: 'var(--text-primary)' }}>Experience</h3>
-
-                        <motion.div
-                            whileHover={{ x: 5 }}
-                            className="card"
-                            style={{ padding: '2rem', marginBottom: '2rem', position: 'relative', background: 'var(--bg-card)', borderLeft: '4px solid var(--primary)' }}
-                        >
-                            <div style={{
-                                position: 'absolute',
-                                top: '2rem',
-                                left: '-2.6rem', // align with vertical line
-                                width: '1rem',
-                                height: '1rem',
-                                background: 'var(--primary)',
-                                borderRadius: '50%',
-                                border: '2px solid var(--bg-dark)'
-                            }} ></div>
-
-                            <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Internship Experience</h4>
-                            <div style={{ width: '100%', marginBottom: '1rem', borderRadius: '8px', overflow: 'hidden' }}>
-                                <img
-                                    src="/certificates/experience-certificate.jpeg"
-                                    alt="Experience Certificate"
-                                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                                />
-                            </div>
-                        </motion.div>
+                                <AnimatePresence>
+                                    {item.image && hoveredIndex === index && (
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                background: `url(${item.image}) center/cover no-repeat`,
+                                                zIndex: 10
+                                            }}
+                                        >
+                                            <div style={{
+                                                position: 'absolute',
+                                                bottom: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                padding: '0.5rem',
+                                                background: 'linear-gradient(transparent, rgba(0,0,0,0.9))',
+                                                color: 'white',
+                                                fontSize: '0.8rem',
+                                                fontWeight: '500',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'flex-end',
+                                                height: '40%'
+                                            }}>
+                                                View Image
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
