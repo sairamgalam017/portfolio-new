@@ -31,7 +31,7 @@ export const projects = [
             'Low power consumption'
         ],
         challenges: 'Calibrating the ultrasonic sensors to avoid false triggers from passing people was crucial. Designing a mechanism that could lift the lid smoothly without straining the servo motor required several iterations.',
-        image: null,
+        image: '/projects/smart-dustbin.png',
         gallery: [],
         github: '#',
         demo: '#'
@@ -49,7 +49,7 @@ export const projects = [
             'Data logging for analysis'
         ],
         challenges: 'Developing a robust system that can withstand outdoor environmental conditions was key. Implementing reliable communication between the field sensors and the central control unit over long distances posed a significant challenge.',
-        image: null,
+        image: '/projects/smart-agriculture.png',
         gallery: [],
         github: '#',
         demo: '#'
@@ -70,6 +70,6 @@ export const projects = [
         image: null,
         gallery: [],
         github: '#',
-        demo: '#'
+        demo: 'https://sairamgalam017.github.io/resistance-project/'
     }
 ];
