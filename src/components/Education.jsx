@@ -56,6 +56,7 @@ const experienceData = [
 
 const Education = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     return (
         <section id="education" style={{ padding: '6rem 0', background: 'var(--bg-card)' }}>
@@ -101,8 +102,17 @@ const Education = () => {
                                 whileHover={{ scale: 1.05 }}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
+                                onClick={() => item.image && setSelectedImage(item.image)}
                                 className="card"
-                                style={{ textAlign: 'center', padding: '2rem', position: 'relative', overflow: 'hidden', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{
+                                    textAlign: 'center',
+                                    padding: '2rem',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    background: 'var(--bg-card)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    cursor: item.image ? 'pointer' : 'default'
+                                }}
                             >
                                 <div style={{ opacity: (hoveredIndex === index && item.image) ? 0 : 1, transition: 'opacity 0.3s' }}>
                                     <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
@@ -155,6 +165,47 @@ const Education = () => {
                         ))}
                     </div>
                 </motion.div>
+
+                <AnimatePresence>
+                    {selectedImage && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedImage(null)}
+                            style={{
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                background: 'rgba(0, 0, 0, 0.9)',
+                                zIndex: 1000,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '2rem',
+                                cursor: 'zoom-out'
+                            }}
+                        >
+                            <motion.img
+                                initial={{ scale: 0.8 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0.8 }}
+                                src={selectedImage}
+                                alt="Full Project View"
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                    borderRadius: '8px',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                                }}
+                            />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
