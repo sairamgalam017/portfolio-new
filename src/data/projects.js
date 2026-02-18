@@ -13,7 +13,7 @@ export const projects = [
             'Remote load control capabilities'
         ],
         challenges: 'Integrating multiple sensors while maintaining low power consumption was a significant challenge. Ensuring reliable GSM connectivity in various signal conditions also required optimizing the antenna placement and error handling in the code.',
-        image: '/advanced-energy-meter.jpg',
+        image: '/projects/advanced-energy-meter.jpeg',
         gallery: [], // Add more images here if available
         github: '#',
         demo: '#'
@@ -67,7 +67,7 @@ export const projects = [
             'Educational mode to learn color codes'
         ],
         challenges: 'Mapping the logic for different band configurations and ensuring the user interface was intuitive for quick input were the main focus areas.',
-        image: null,
+        image: '/projects/resistor-calculator.svg',
         gallery: [],
         github: '#',
         demo: 'https://sairamgalam017.github.io/resistance-project/'

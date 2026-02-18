@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Linear Gradient for Resistor Body -->
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Metallic Gradient for Leads -->
+    <linearGradient id="leadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#0f172a" />
+  
+  <!-- Grid Pattern (Tech feel) -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)" />
+
+  <!-- Circuit Lines -->
+  <path d="M 0 300 L 200 300 M 600 300 L 800 300" stroke="#06b6d4" stroke-width="2" opacity="0.5" />
+  <circle cx="200" cy="300" r="4" fill="#06b6d4" filter="url(#glow)" />
+  <circle cx="600" cy="300" r="4" fill="#06b6d4" filter="url(#glow)" />
+
+  <!-- Connecting Leads -->
+  <rect x="150" y="290" width="150" height="20" fill="url(#leadGradient)" />
+  <rect x="500" y="290" width="150" height="20" fill="url(#leadGradient)" />
+
+  <!-- Resistor Body -->
+  <path d="M 250 250 H 550 C 570 250 580 260 580 280 V 320 C 580 340 570 350 550 350 H 250 C 230 350 220 340 220 320 V 280 C 220 260 230 250 250 250 Z" 
+        fill="url(#bodyGradient)" stroke="#64748b" stroke-width="2" />
+  
+  <!-- Color Bands -->
+  <!-- Band 1: Brown (1) -->
+  <rect x="280" y="250" width="30" height="100" fill="#a05a2c" />
+  <!-- Band 2: Black (0) -->
+  <rect x="340" y="250" width="30" height="100" fill="#000000" />
+  <!-- Band 3: Red (Multiplier x100) -> 1k Ohm -->
+  <rect x="400" y="250" width="30" height="100" fill="#ef4444" filter="url(#glow)" />
+  <!-- Band 4: Gold (Tolerance) -->
+  <rect x="500" y="250" width="30" height="100" fill="#fbbf24" />
+
+  <!-- Reflection/Highlight -->
+  <path d="M 250 260 H 550 C 560 260 570 265 570 270 V 280 H 230 V 270 C 230 265 240 260 250 260 Z" 
+        fill="white" opacity="0.1" />
+
+  <!-- Text / UI Elements -->
+  <text x="400" y="150" text-anchor="middle" font-family="monospace" font-size="32" fill="#e2e8f0" font-weight="bold" letter-spacing="2">RESISTOR CALCULATOR</text>
+  <text x="400" y="200" text-anchor="middle" font-family="monospace" font-size="20" fill="#94a3b8">1 kΩ ± 5%</text>
+
+  <!-- Cyberpunk Accents -->
+  <path d="M 200 120 L 180 120 L 180 480 L 200 480" stroke="#06b6d4" stroke-width="2" fill="none" opacity="0.3" marker-start="url(#dot)" />
+  <path d="M 600 120 L 620 120 L 620 480 L 600 480" stroke="#06b6d4" stroke-width="2" fill="none" opacity="0.3" />
+
+  <rect x="350" y="450" width="100" height="40" rx="4" stroke="#06b6d4" stroke-width="1" fill="none" />
+  <text x="400" y="475" text-anchor="middle" font-family="monospace" font-size="14" fill="#06b6d4">CALCULATE</text>
+
+</svg>

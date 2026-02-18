@@ -51,8 +51,12 @@ const ProjectDetails = () => {
 
                     {/* Main Image */}
                     {project.image && (
-                        <div style={{ width: '100%', height: '400px', borderRadius: '1rem', overflow: 'hidden', marginBottom: '3rem', border: '1px solid var(--border-color)' }}>
-                            <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div style={{ width: '100%', borderRadius: '1rem', overflow: 'hidden', marginBottom: '3rem', border: '1px solid var(--border-color)', background: '#1e293b' }}>
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                style={{ width: '100%', height: 'auto', maxHeight: '600px', objectFit: 'contain', display: 'block', margin: '0 auto' }}
+                            />
                         </div>
                     )}
 
