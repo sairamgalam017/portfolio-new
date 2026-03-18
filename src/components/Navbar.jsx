@@ -45,7 +45,7 @@ const Navbar = () => {
                     letterSpacing: '-0.05em',
                     fontFamily: 'Space Grotesk, sans-serif'
                 }}>
-                    Galam<span style={{ color: 'var(--primary)' }}>.</span>dev
+                    Galam Sairam
                 </a>
 
                 {/* Desktop Menu */}

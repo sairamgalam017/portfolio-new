@@ -1,24 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter } from 'lucide-react';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here you would typically send the data to a backend or service like EmailJS/Formspree
-        alert('Thank you for your message! (This is a demo)');
-        setFormData({ name: '', email: '', message: '' });
-    };
 
     return (
         <section id="contact" style={{ padding: '6rem 0', background: 'var(--bg-card)' }}>
@@ -31,9 +15,9 @@ const Contact = () => {
                 >
                     <h2 className="section-title">Get In Touch</h2>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'start' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
                         {/* Contact Info */}
-                        <div style={{ background: 'var(--bg-dark)', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                        <div style={{ background: 'var(--bg-dark)', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)', maxWidth: '600px', width: '100%' }}>
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Let's Talk</h3>
                             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
                                 I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
@@ -107,94 +91,6 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Form */}
-                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label htmlFor="name" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                    style={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid rgba(255,255,255,0.1)',
-                                        background: 'var(--bg-dark)',
-                                        color: 'white',
-                                        outline: 'none',
-                                        transition: 'border-color 0.2s'
-                                    }}
-                                    placeholder="John Doe"
-                                />
-                            </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label htmlFor="email" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    style={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid rgba(255,255,255,0.1)',
-                                        background: 'var(--bg-dark)',
-                                        color: 'white',
-                                        outline: 'none',
-                                        transition: 'border-color 0.2s'
-                                    }}
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label htmlFor="message" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows="5"
-                                    style={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid rgba(255,255,255,0.1)',
-                                        background: 'var(--bg-dark)',
-                                        color: 'white',
-                                        outline: 'none',
-                                        transition: 'border-color 0.2s',
-                                        resize: 'vertical'
-                                    }}
-                                    placeholder="Your message..."
-                                ></textarea>
-                            </div>
-
-                            <button type="submit" className="button-primary" style={{
-                                background: 'var(--primary)',
-                                color: '#0f172a',
-                                padding: '1rem',
-                                borderRadius: '8px',
-                                fontWeight: '600',
-                                fontSize: '1rem',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '0.5rem',
-                                cursor: 'pointer',
-                                border: 'none',
-                                marginTop: '1rem'
-                            }}>
-                                Send Message <Send size={20} />
-                            </button>
-                        </form>
                     </div>
                 </motion.div>
             </div>

@@ -276,7 +276,7 @@ const Hero = () => {
                                     src="/profile.jpg"
                                     onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=Galam+Sairam&background=050a05&color=00FF41&size=512"; }}
                                     alt="Galam Sairam"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9, filter: 'contrast(1.2) brightness(0.9) grayscale(20%) hue-rotate(90deg)' }}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                             </div>
                         </motion.div>
