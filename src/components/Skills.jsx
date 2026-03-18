@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Zap, Activity, Terminal, MessageSquare, Code, Settings, Calculator } from 'lucide-react';
+import { Cpu, Zap, Activity, Terminal, MessageSquare, Code, Settings, Calculator, Globe, BookOpen, Mic } from 'lucide-react';
 
 const skills = [
     { name: 'C Language', icon: <Terminal />, percentage: 65, level: 'Intermediate' },
@@ -13,9 +13,9 @@ const skills = [
 ];
 
 const languages = [
-    { name: 'Telugu', percentage: 100, level: 'Mother Tongue' },
-    { name: 'English', percentage: 80, level: 'Professional' },
-    { name: 'Hindi', percentage: 50, level: 'Conversational' }
+    { name: 'Telugu', percentage: 100, level: 'Mother Tongue', icon: <Mic /> },
+    { name: 'English', percentage: 80, level: 'Professional', icon: <Globe /> },
+    { name: 'Hindi', percentage: 50, level: 'Conversational', icon: <BookOpen /> }
 ];
 
 const Skills = () => {
@@ -57,27 +57,44 @@ const Skills = () => {
                     </div>
 
                     <h2 className="section-title">Languages</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                         {languages.map((lang, index) => (
                             <motion.div
                                 key={index}
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(56, 189, 248, 0.15)' }}
                                 className="card"
-                                style={{ textAlign: 'center', padding: '2rem' }}
+                                style={{
+                                    padding: '2rem',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%)',
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    borderRadius: '16px',
+                                    backdropFilter: 'blur(10px)'
+                                }}
                             >
-                                <div style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-                                    <MessageSquare size={40} />
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                        <div style={{ color: 'var(--secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.1)' }}>
+                                            {React.cloneElement(lang.icon, { size: 24 })}
+                                        </div>
+                                        <div style={{ textAlign: 'left' }}>
+                                            <h3 style={{ fontSize: '1.25rem', margin: '0 0 0.25rem 0' }}>{lang.name}</h3>
+                                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{lang.level}</span>
+                                        </div>
+                                    </div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--secondary)' }}>
+                                        {lang.percentage}%
+                                    </div>
                                 </div>
-                                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{lang.name}</h3>
-                                <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '10px', height: '8px', marginTop: '1rem', overflow: 'hidden' }}>
+                                <div style={{ width: '100%', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', height: '12px', overflow: 'hidden' }}>
                                     <motion.div
                                         initial={{ width: 0 }}
                                         whileInView={{ width: `${lang.percentage}%` }}
-                                        transition={{ duration: 1, delay: 0.2 }}
-                                        style={{ height: '100%', background: 'var(--secondary)', borderRadius: '10px' }}
+                                        transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+                                        style={{ height: '100%', background: 'linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%)', borderRadius: '10px', boxShadow: '0 0 10px rgba(56, 189, 248, 0.5)' }}
                                     />
                                 </div>
-                                <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>{lang.level}</p>
                             </motion.div>
                         ))}
                     </div>

@@ -1,36 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
 
 :root {
-  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  font-family: 'Share Tech Mono', 'Orbitron', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
   color-scheme: dark;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--text-primary);
 
-  /* Modern Dark Palette */
-  --bg-dark: #0a0a0f;
-  --bg-card: rgba(30, 41, 59, 0.5);
-  --bg-card-hover: rgba(30, 41, 59, 0.8);
+  /* Hardware/PCB Theme Palette */
+  --bg-dark: #050a05;
+  --bg-card: rgba(10, 20, 10, 0.45);
+  --bg-card-hover: rgba(20, 40, 20, 0.6);
 
-  /* Neon Accents */
-  --primary: #06b6d4;
-  /* Cyan 500 */
-  --primary-glow: rgba(6, 182, 212, 0.5);
-  --secondary: #8b5cf6;
-  /* Violet 500 */
-  --secondary-glow: rgba(139, 92, 246, 0.5);
-  --accent: #f43f5e;
-  /* Rose 500 */
+  /* Neon Green Accents */
+  --primary: #39ff14;
+  --primary-glow: rgba(57, 255, 20, 0.5);
+  --secondary: #00ffff;
+  --secondary-glow: rgba(0, 255, 255, 0.5);
 
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
 
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Glassmorphism Structural UI */
+  --border-color: rgba(57, 255, 20, 0.2);
+  --glass-border: 1px solid rgba(57, 255, 20, 0.3);
 
   --spacing-section: 8rem;
+}
+
+/* High-Tech Futuristic Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 html {
@@ -38,152 +50,155 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* PCB Subtle Pattern Background */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-dark);
-  background: radial-gradient(circle at 50% -20%, #1e1b4b, #0f172a 40%, #020617);
+
+  /* Dots (Vias) and Tracks (Lines) */
+  background-image:
+    radial-gradient(circle at center, rgba(57, 255, 20, 0.15) 2px, transparent 2px),
+    linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 60px 60px;
+  background-position: center top;
   background-attachment: fixed;
   color: var(--text-primary);
   overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  margin: 0;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
 }
 
 a {
   font-weight: 500;
   color: var(--primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   position: relative;
 }
 
 a:hover {
-  color: var(--secondary);
-  text-shadow: 0 0 8px var(--secondary-glow);
+  color: #fff;
+  text-shadow: 0 0 15px var(--primary-glow);
 }
 
-button {
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
+button,
+a.button-primary {
+  border-radius: 8px;
+  /* Slightly rounded for glassmorphism */
+  border: var(--glass-border);
   padding: 0.75em 1.5em;
   font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Space Grotesk', inherit;
-  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: 500;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: rgba(57, 255, 20, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  color: var(--text-primary);
+  transition: all 0.3s ease-in-out;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-button:hover {
-  border-color: var(--primary);
-  background-color: rgba(6, 182, 212, 0.1);
-  box-shadow: 0 0 15px var(--primary-glow);
+button:hover,
+a.button-primary:hover {
+  background-color: rgba(57, 255, 20, 0.15);
+  box-shadow: 0 0 20px var(--primary-glow), inset 0 0 10px rgba(57, 255, 20, 0.2);
   transform: translateY(-2px);
+  border-color: var(--primary);
+  color: #fff;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar, tech style */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
+  border-left: 1px solid var(--border-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: rgba(57, 255, 20, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
 /* Utility Classes */
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .section-title {
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: 3.5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+}
+
+.section-title::before {
+  content: '[ ';
+  color: var(--primary);
+  margin-right: 15px;
 }
 
 .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  border-radius: 2px;
-  box-shadow: 0 0 10px var(--primary-glow);
+  content: ' ]';
+  color: var(--primary);
+  margin-left: 15px;
+  margin-right: 20px;
 }
 
-/* Glassmorphism Cards */
+/* Glassmorphism Cards with Neon Green Glowing Borders */
 .card {
   background: var(--bg-card);
   padding: 2.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: var(--glass-border);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
 }
 
+/* PCB Trace Lines on Cards (Subtle hardware detail) */
 .card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
-  pointer-events: none;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.3;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-5px);
   border-color: var(--primary);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--primary-glow), inset 0 0 15px rgba(57, 255, 20, 0.1);
+  background: var(--bg-card-hover);
 }
 
 /* Navbar Responsiveness */
 .mobile-toggle {
   display: block;
   padding: 0.5rem;
-  color: var(--text-primary);
+  color: var(--primary);
 }
 
 .desktop-menu {
@@ -201,13 +216,11 @@ button:hover {
   }
 }
 
-/* Section Spacing */
 section {
   position: relative;
   z-index: 1;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   :root {
     --spacing-section: 4rem;
@@ -219,6 +232,6 @@ section {
 
   .section-title {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 }

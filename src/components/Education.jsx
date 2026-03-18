@@ -76,20 +76,23 @@ const Education = () => {
                                 className="card"
                                 style={{ textAlign: 'center', padding: '2rem', position: 'relative', overflow: 'hidden', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}
                             >
-                                <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-                                    {React.cloneElement(item.icon, { size: 48 })}
-                                </div>
-                                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{item.title}</h3>
-                                <p style={{ color: item.color, marginBottom: '0.5rem', fontWeight: '500' }}>{item.institution}</p>
-                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                                    <p>{item.period}</p>
-                                    <p>{item.grade}</p>
-                                </div>
-                                {item.hasTechElement && (
-                                    <div style={{ marginTop: '1rem', width: '100%', minHeight: '150px' }}>
-                                        <TechElement />
+                                <div>
+                                    <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
+                                        {React.cloneElement(item.icon, { size: 48 })}
                                     </div>
-                                )}
+                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{item.title}</h3>
+                                    <p style={{ color: item.color, marginBottom: '0.5rem', fontWeight: '500' }}>{item.institution}</p>
+                                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                        <p>{item.period}</p>
+                                        <p>{item.grade}</p>
+                                    </div>
+                                    {item.hasTechElement && (
+                                        <div style={{ marginTop: '1rem', width: '100%', minHeight: '150px' }}>
+                                            <TechElement />
+                                        </div>
+                                    )}
+                                </div>
+
                             </motion.div>
                         ))}
                     </div>

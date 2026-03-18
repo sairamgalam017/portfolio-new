@@ -71,5 +71,23 @@ export const projects = [
         gallery: [],
         github: '#',
         demo: 'https://sairamgalam017.github.io/resistance-project/'
+    },
+    {
+        id: 'dual-axis-solar-system',
+        title: 'Dual Axis Solar Monitoring and Controlling System',
+        shortDescription: 'A monitoring and controlling system that tracks the sun on two axes to maximize solar energy generation.',
+        longDescription: 'The Dual Axis Solar Monitoring and Controlling System is designed to significantly increase the efficiency of solar panels. By continuously tracking the sun\'s position across both the horizontal and vertical axes using Light Dependent Resistors (LDRs), the system ensures that the solar panels are always optimally aligned with the sun. This maximizes the absorption of sunlight and the subsequent generation of electrical energy.',
+        tech: ['Arduino', 'Servo Motors', 'LDR Sensors', 'Solar Panel'],
+        features: [
+            'Dual-axis solar tracking for maximum energy efficiency',
+            'Automated positioning based on light intensity',
+            'Real-time monitoring of system performance',
+            'Low power consumption control unit'
+        ],
+        challenges: 'Designing a robust mechanical structure for precise panel movement and calibrating the LDRs to accurately detect the sun\'s optimal position under varying weather conditions required careful tuning.',
+        image: '/projects/dual-axis-solar.png',
+        gallery: [],
+        github: '#',
+        demo: '#'
     }
 ];

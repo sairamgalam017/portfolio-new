@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import ProjectDetails from './components/ProjectDetails';
 import Preloader from './components/Preloader';
+import CustomCursor from './components/CustomCursor';
 import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
 import './index.css';
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <Router>
+      <CustomCursor />
       <ScrollToTop />
       <AnimatePresence mode='wait'>
         {loading && <Preloader key="preloader" />}

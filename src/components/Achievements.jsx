@@ -4,9 +4,9 @@ import { Award, Trophy, Star } from 'lucide-react';
 
 const achievements = [
     {
-        title: 'Diploma Topper',
-        organization: 'Usharama College',
-        description: 'Secured 1st rank in all 3 years of Diploma.',
+        title: 'Branch Topper',
+        organization: 'Usharama College of Engineering and Technology',
+        description: 'Branch topper at Usharama College of Engineering and Technology.',
         icon: <Trophy color="#f59e0b" />,
         image: '/diploma.jpg'
     },
