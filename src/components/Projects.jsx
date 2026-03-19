@@ -25,30 +25,42 @@ const Projects = () => {
                                 style={{ padding: '0', background: 'var(--bg-dark)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
                             >
                                 <Link to={`/project/${project.id}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit', flex: '1' }}>
-                                    <div style={{ height: '200px', background: '#334155', position: 'relative' }}>
+                                    <div style={{ height: '220px', background: '#0f1117', position: 'relative', overflow: 'hidden' }}>
                                         {project.image ? (
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                                                onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.style.display = 'none';
-                                                    e.target.parentNode.children[1].style.display = 'flex';
-                                                }}
-                                            />
+                                            <>
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'contain',
+                                                        objectPosition: 'center',
+                                                        padding: '0.5rem',
+                                                    }}
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.style.display = 'none';
+                                                        e.target.parentNode.children[1].style.display = 'flex';
+                                                    }}
+                                                />
+                                                {/* Soft gradient blending bottom edge into card */}
+                                                <div style={{
+                                                    position: 'absolute', bottom: 0, left: 0,
+                                                    width: '100%', height: '40px',
+                                                    background: 'linear-gradient(transparent, rgba(15,17,23,0.85))',
+                                                    pointerEvents: 'none',
+                                                }} />
+                                            </>
                                         ) : null}
                                         <div style={{
                                             display: project.image ? 'none' : 'flex',
                                             position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            width: '100%',
-                                            height: '100%',
+                                            top: 0, left: 0,
+                                            width: '100%', height: '100%',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            color: '#94a3b8',
-                                            background: '#1e293b'
+                                            background: '#0f1117',
                                         }}>
                                             <span style={{ fontSize: '3rem', opacity: 0.2 }}>⚡</span>
                                         </div>
