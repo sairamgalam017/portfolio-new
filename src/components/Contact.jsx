@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter, Github } from 'lucide-react';
 
 const Contact = () => {
 
@@ -86,6 +86,18 @@ const Contact = () => {
                                         <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>X (Twitter)</h4>
                                         <a href="https://x.com/@saira74438" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
                                             Follow Me
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
+                                        <Github size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>GitHub</h4>
+                                        <a href="https://github.com/sairamgalam017" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
+                                            View Profile
                                         </a>
                                     </div>
                                 </div>
