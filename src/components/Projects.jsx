@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, FileText, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 
@@ -85,11 +85,21 @@ const Projects = () => {
                                             </span>
                                         ))}
                                     </div>
-                                    <div style={{ display: 'flex', gap: '1rem' }}>
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                        {project.presentation && (
+                                            <a href={project.presentation} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#39ff14', fontSize: '0.9rem', textDecoration: 'none' }}>
+                                                <FileText size={18} /> Presentation
+                                            </a>
+                                        )}
+                                        {project.paper && (
+                                            <a href={project.paper} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#00e5ff', fontSize: '0.9rem', textDecoration: 'none' }}>
+                                                <BookOpen size={18} /> Research Paper
+                                            </a>
+                                        )}
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem', textDecoration: 'none' }}>
                                             <Github size={18} /> Code
                                         </a>
-                                        <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontSize: '0.9rem' }}>
+                                        <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--secondary)', fontSize: '0.9rem', textDecoration: 'none' }}>
                                             <ExternalLink size={18} /> Live Demo
                                         </a>
                                     </div>

@@ -86,6 +86,8 @@ export const projects = [
         ],
         challenges: 'Designing a robust mechanical structure for precise panel movement and calibrating the LDRs to accurately detect the sun\'s optimal position under varying weather conditions required careful tuning.',
         image: '/projects/dual-axis-solar.png',
+        presentation: '/Dual_Axis_Solar_Tracking.pdf',
+        paper: '/Dual_Axis_Solar_Tracker_Paper.pdf',
         gallery: [],
         github: '#',
         demo: '#'

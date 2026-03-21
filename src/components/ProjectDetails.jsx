@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Github, ExternalLink, Cpu, Zap } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Cpu, Zap, FileText, BookOpen } from 'lucide-react';
 import { projects } from '../data/projects';
 
 const ProjectDetails = () => {
@@ -101,10 +101,20 @@ const ProjectDetails = () => {
                             <div className="card">
                                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Project Links</h3>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', color: 'var(--text-primary)', transition: 'background 0.2s' }}>
+                                    {project.presentation && (
+                                        <a href={project.presentation} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(57, 255, 20, 0.1)', borderRadius: '8px', color: 'var(--primary)', border: '1px solid rgba(57, 255, 20, 0.2)', transition: 'background 0.2s', textDecoration: 'none' }}>
+                                            <FileText size={20} /> View Presentation
+                                        </a>
+                                    )}
+                                    {project.paper && (
+                                        <a href={project.paper} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(0, 229, 255, 0.1)', borderRadius: '8px', color: '#00e5ff', border: '1px solid rgba(0, 229, 255, 0.2)', transition: 'background 0.2s', textDecoration: 'none' }}>
+                                            <BookOpen size={20} /> Read Research Paper
+                                        </a>
+                                    )}
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', color: 'var(--text-primary)', transition: 'background 0.2s', textDecoration: 'none' }}>
                                         <Github size={20} /> View Source Code
                                     </a>
-                                    <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(6, 182, 212, 0.1)', borderRadius: '8px', color: 'var(--primary)', border: '1px solid rgba(6, 182, 212, 0.2)', transition: 'background 0.2s' }}>
+                                    <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '1rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '8px', color: 'var(--secondary)', border: '1px solid rgba(56, 189, 248, 0.2)', transition: 'background 0.2s', textDecoration: 'none' }}>
                                         <ExternalLink size={20} /> Live Demo
                                     </a>
                                 </div>
