@@ -86,6 +86,11 @@ const Achievements = () => {
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
                                             transition={{ duration: 0.3 }}
+                                            onClick={() => {
+                                                if (item.image && !item.image.endsWith('.pdf')) {
+                                                    window.open(item.image, '_blank');
+                                                }
+                                            }}
                                             style={{
                                                 position: 'absolute',
                                                 top: 0,
@@ -97,7 +102,8 @@ const Achievements = () => {
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 justifyContent: item.image.endsWith('.pdf') ? 'center' : 'flex-end',
-                                                alignItems: 'center'
+                                                alignItems: 'center',
+                                                cursor: item.image && !item.image.endsWith('.pdf') ? 'pointer' : 'auto'
                                             }}
                                         >
                                             {item.image.endsWith('.pdf') ? (
@@ -138,7 +144,7 @@ const Achievements = () => {
                                                     alignItems: 'flex-end',
                                                     height: '40%'
                                                 }}>
-                                                    Certificate Preview
+                                                    Tap to Open
                                                 </div>
                                             )}
                                         </motion.div>

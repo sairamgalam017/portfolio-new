@@ -7,19 +7,19 @@ import {
 
 /* ─── DATA ───────────────────────────────────────────────── */
 const modules = [
-    { id: 'MOD_001', name: 'Power Systems',     icon: <Activity />,  pct: 85, color: '#39ff14',  status: 'NOMINAL' },
-    { id: 'MOD_002', name: 'Power Electronics', icon: <Zap />,       pct: 80, color: '#00ffaa',  status: 'NOMINAL' },
-    { id: 'MOD_003', name: 'Control Systems',   icon: <Settings />,  pct: 75, color: '#00ccff',  status: 'NOMINAL' },
-    { id: 'MOD_004', name: 'Math Modelling',    icon: <Calculator />,pct: 70, color: '#39ff14',  status: 'NOMINAL' },
-    { id: 'MOD_005', name: 'C Language',        icon: <Terminal />,  pct: 65, color: '#00ffaa',  status: 'ACTIVE'  },
-    { id: 'MOD_006', name: 'Python',            icon: <Code />,      pct: 60, color: '#39ff14',  status: 'ACTIVE'  },
-    { id: 'MOD_007', name: 'Assembly Language', icon: <Cpu />,       pct: 60, color: '#999999',  status: 'STANDBY' },
+    { id: 'MOD_001', name: 'Power Systems', icon: <Activity />, pct: 85, color: '#39ff14', status: 'NOMINAL' },
+    { id: 'MOD_002', name: 'Power Electronics', icon: <Zap />, pct: 80, color: '#00ffaa', status: 'NOMINAL' },
+    { id: 'MOD_003', name: 'Control Systems', icon: <Settings />, pct: 75, color: '#00ccff', status: 'NOMINAL' },
+    { id: 'MOD_004', name: 'Math Modelling', icon: <Calculator />, pct: 70, color: '#39ff14', status: 'NOMINAL' },
+    { id: 'MOD_005', name: 'C Language', icon: <Terminal />, pct: 65, color: '#00ffaa', status: 'ACTIVE' },
+    { id: 'MOD_006', name: 'Python', icon: <Code />, pct: 60, color: '#39ff14', status: 'ACTIVE' },
+    { id: 'MOD_007', name: 'Assembly Language', icon: <Cpu />, pct: 60, color: '#999999', status: 'STANDBY' },
 ];
 
 const langModules = [
-    { id: 'LANG_01', name: 'Telugu',  pct: 100, level: 'NATIVE',         color: '#39ff14', icon: <Mic /> },
-    { id: 'LANG_02', name: 'English', pct: 80,  level: 'PROFESSIONAL',   color: '#00ffaa', icon: <Globe /> },
-    { id: 'LANG_03', name: 'Hindi',   pct: 50,  level: 'CONVERSATIONAL', color: '#00ccff', icon: <BookOpen /> },
+    { id: 'LANG_01', name: 'Telugu', pct: 100, level: 'NATIVE', color: '#39ff14', icon: <Mic /> },
+    { id: 'LANG_02', name: 'English', pct: 80, level: 'PROFESSIONAL', color: '#00ffaa', icon: <Globe /> },
+    { id: 'LANG_03', name: 'Hindi', pct: 50, level: 'CONVERSATIONAL', color: '#00ccff', icon: <BookOpen /> },
 ];
 
 const statusColors = { NOMINAL: '#39ff14', ACTIVE: '#00ffaa', STANDBY: '#666' };
@@ -45,13 +45,13 @@ const useCountUp = (target, started, duration = 1400) => {
 const ModuleRow = ({ mod, index, sectionStarted }) => {
     const [loaded, setLoaded] = useState(false);
     const delay = index * 180;
-    
+
     useEffect(() => {
         if (!sectionStarted) return;
         const t = setTimeout(() => setLoaded(true), delay + 300);
         return () => clearTimeout(t);
     }, [sectionStarted, delay]);
-    
+
     const count = useCountUp(mod.pct, loaded);
 
     return (
@@ -128,7 +128,7 @@ const ModuleRow = ({ mod, index, sectionStarted }) => {
 const RadialRing = ({ lang, index, started }) => {
     const r = 38, circ = 2 * Math.PI * r;
     const [filled, setFilled] = useState(false);
-    
+
     useEffect(() => {
         if (!started) return;
         const t = setTimeout(() => setFilled(true), index * 250 + 400);
