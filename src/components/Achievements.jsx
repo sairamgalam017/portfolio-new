@@ -44,6 +44,27 @@ const achievements = [
         description: 'Certified in Solar Photovoltaic Systems.',
         icon: <Award color="#f97316" />,
         image: '/certificates/solarpv.jpeg'
+    },
+    {
+        title: 'MATLAB Onramp',
+        organization: 'MathWorks',
+        description: 'Completed the self-paced MATLAB Onramp training course.',
+        icon: <Award color="#0284c7" />,
+        image: '/certificates/matlab-onramp.pdf'
+    },
+    {
+        title: 'Solar PV System Design',
+        organization: 'SkillDzire',
+        description: 'Completed an internship in Solar PV System Design with APSCHE.',
+        icon: <Award color="#10b981" />,
+        image: '/certificates/solar-pv-internship.pdf'
+    },
+    {
+        title: 'EV Engineering Mastercourse',
+        organization: 'DIYguru',
+        description: 'Completed EV Engineering Mastercourse Part I: EV Fundamentals & Core Components (Grade A+).',
+        icon: <Award color="#f43f5e" />,
+        image: '/certificates/ev-engineering.pdf'
     }
 ];
 
