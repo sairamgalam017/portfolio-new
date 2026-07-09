@@ -2,10 +2,23 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter, Github } from 'lucide-react';
 
-const Contact = () => {
+const contactItems = [
+    { icon: <Mail />, label: 'Email', value: 'sairam.galam01@gmail.com', href: 'mailto:sairam.galam01@gmail.com', color: '#149eca' },
+    { icon: <Phone />, label: 'Phone', value: '+91 89190 69496', href: 'tel:+918919069496', color: '#44a87a' },
+    { icon: <MapPin />, label: 'Location', value: 'Vijayawada, Enikepadu', href: null, color: '#dba535' },
+    { icon: <Linkedin />, label: 'LinkedIn', value: 'Connect Profile', href: 'https://www.linkedin.com/in/sairam-galam-b2766039b', color: '#149eca' },
+    { icon: <Instagram />, label: 'Instagram', value: 'Follow Me', href: 'https://www.instagram.com/sairam_galam_017/', color: '#f472b6' },
+    { icon: <Twitter />, label: 'X (Twitter)', value: 'Follow Me', href: 'https://x.com/@saira74438', color: '#58c4dc' },
+    { icon: <Github />, label: 'GitHub', value: 'View Profile', href: 'https://github.com/sairamgalam017', color: '#99a1b3' },
+];
 
+const Contact = () => {
     return (
-        <section id="contact" style={{ padding: '6rem 0', background: 'var(--bg-card)' }}>
+        <section id="contact" style={{
+            padding: 'var(--spacing-section) 0',
+            background: 'var(--gradient-wash-left)',
+            borderTop: '1px solid var(--border-color)',
+        }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -16,91 +29,58 @@ const Contact = () => {
                     <h2 className="section-title">Get In Touch</h2>
 
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        {/* Contact Info */}
-                        <div style={{ background: 'var(--bg-dark)', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)', maxWidth: '600px', width: '100%' }}>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Let's Talk</h3>
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                        <div style={{
+                            background: 'var(--bg-card)',
+                            padding: '2.5rem',
+                            borderRadius: '1.25rem',
+                            border: '1px solid var(--border-color)',
+                            maxWidth: '600px',
+                            width: '100%',
+                            boxShadow: 'var(--shadow-card)',
+                        }}>
+                            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.75rem', fontWeight: 700 }}>Let's Talk</h3>
+                            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.7 }}>
                                 I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                             </p>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Mail size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Email</h4>
-                                        <p style={{ fontWeight: '500' }}>sairam.galam01@gmail.com</p>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Phone size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Phone</h4>
-                                        <p style={{ fontWeight: '500' }}>+91 89190 69496</p>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <MapPin size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Location</h4>
-                                        <p style={{ fontWeight: '500' }}>Vijayawada, Enikepadu</p>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Linkedin size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>LinkedIn</h4>
-                                        <a href="https://www.linkedin.com/in/sairam-galam-b2766039b" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
-                                            Connect Profile
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Instagram size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Instagram</h4>
-                                        <a href="https://www.instagram.com/sairam_galam_017/" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
-                                            Follow Me
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Twitter size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>X (Twitter)</h4>
-                                        <a href="https://x.com/@saira74438" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
-                                            Follow Me
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ padding: '0.8rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', color: 'var(--primary)' }}>
-                                        <Github size={24} />
-                                    </div>
-                                    <div>
-                                        <h4 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>GitHub</h4>
-                                        <a href="https://github.com/sairamgalam017" target="_blank" rel="noopener noreferrer" style={{ fontWeight: '500', color: 'var(--text-primary)' }}>
-                                            View Profile
-                                        </a>
-                                    </div>
-                                </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                                {contactItems.map((item, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                                        viewport={{ once: true }}
+                                        style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
+                                    >
+                                        <div style={{
+                                            width: 44, height: 44,
+                                            borderRadius: '0.75rem',
+                                            background: `${item.color}12`,
+                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            color: item.color,
+                                            flexShrink: 0,
+                                        }}>
+                                            {React.cloneElement(item.icon, { size: 20 })}
+                                        </div>
+                                        <div>
+                                            <h4 style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '0.1rem' }}>{item.label}</h4>
+                                            {item.href ? (
+                                                <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" style={{
+                                                    fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.95rem',
+                                                    transition: 'color 0.2s',
+                                                }}
+                                                    onMouseEnter={e => e.target.style.color = item.color}
+                                                    onMouseLeave={e => e.target.style.color = 'var(--text-primary)'}
+                                                >
+                                                    {item.value}
+                                                </a>
+                                            ) : (
+                                                <p style={{ fontWeight: 600, fontSize: '0.95rem', margin: 0 }}>{item.value}</p>
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
                     </div>

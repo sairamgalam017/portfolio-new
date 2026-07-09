@@ -31,36 +31,46 @@ const Navbar = () => {
             left: 0,
             width: '100%',
             zIndex: 100,
-            background: scrolled || isOpen ? 'rgba(10, 10, 15, 0.8)' : 'transparent',
-            backdropFilter: scrolled || isOpen ? 'blur(12px)' : 'none',
-            borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
-            transition: 'all 0.4s ease',
-            padding: scrolled ? '1rem 0' : '1.5rem 0'
+            background: scrolled || isOpen ? 'rgba(35, 39, 47, 0.92)' : 'transparent',
+            backdropFilter: scrolled || isOpen ? 'blur(16px) saturate(180%)' : 'none',
+            borderBottom: scrolled ? '1px solid var(--border-color)' : 'none',
+            transition: 'all 0.3s ease',
+            padding: scrolled ? '0.75rem 0' : '1.25rem 0'
         }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <a href="#" style={{
-                    fontSize: '1.8rem',
+                    fontSize: '1.5rem',
                     fontWeight: '700',
                     color: 'var(--text-primary)',
-                    letterSpacing: '-0.05em',
-                    fontFamily: 'Space Grotesk, sans-serif'
+                    letterSpacing: '-0.03em',
+                    fontFamily: 'Inter, sans-serif',
+                    transition: 'opacity 0.2s',
                 }}>
-                    Galam Sairam
+                    <span style={{ color: 'var(--primary)' }}>G</span>alam Sairam
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="desktop-menu" style={{ gap: '2rem', alignItems: 'center' }}>
+                <div className="desktop-menu" style={{ alignItems: 'center' }}>
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
                             style={{
                                 color: 'var(--text-secondary)',
-                                fontSize: '0.95rem',
+                                fontSize: '0.9rem',
                                 fontWeight: '500',
-                                position: 'relative'
+                                padding: '0.5rem 0.9rem',
+                                borderRadius: '9999px',
+                                transition: 'all 0.2s ease',
                             }}
-                            className="nav-link"
+                            onMouseEnter={(e) => {
+                                e.target.style.background = 'rgba(255,255,255,0.05)';
+                                e.target.style.color = 'var(--text-primary)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.background = 'transparent';
+                                e.target.style.color = 'var(--text-secondary)';
+                            }}
                         >
                             {link.name}
                         </a>
@@ -76,10 +86,11 @@ const Navbar = () => {
                         border: 'none',
                         color: 'var(--text-primary)',
                         padding: '0.5rem',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        borderRadius: '50%',
                     }}
                 >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
@@ -90,28 +101,35 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.25 }}
                         style={{
                             overflow: 'hidden',
-                            borderTop: '1px solid rgba(255,255,255,0.05)',
-                            background: 'rgba(10, 10, 15, 0.95)',
-                            backdropFilter: 'blur(15px)'
+                            borderTop: '1px solid var(--border-color)',
+                            background: 'rgba(35, 39, 47, 0.98)',
+                            backdropFilter: 'blur(20px)',
                         }}
                     >
-                        <div className="container" style={{ display: 'flex', flexDirection: 'column', padding: '2rem 0', gap: '1rem' }}>
+                        <div className="container" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem 0', gap: '0.25rem' }}>
                             {navLinks.map((link) => (
                                 <motion.a
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileTap={{ scale: 0.98 }}
                                     style={{
-                                        fontSize: '1.2rem',
-                                        color: 'var(--text-primary)',
-                                        textAlign: 'center',
-                                        padding: '0.75rem',
-                                        borderRadius: '8px',
-                                        background: 'rgba(255,255,255,0.03)'
+                                        fontSize: '1.05rem',
+                                        color: 'var(--text-secondary)',
+                                        padding: '0.75rem 1rem',
+                                        borderRadius: '0.75rem',
+                                        transition: 'all 0.2s ease',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.background = 'rgba(255,255,255,0.04)';
+                                        e.target.style.color = 'var(--text-primary)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.background = 'transparent';
+                                        e.target.style.color = 'var(--text-secondary)';
                                     }}
                                 >
                                     {link.name}

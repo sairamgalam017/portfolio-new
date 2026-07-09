@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Cpu, Activity } from 'lucide-react';
 
 const Preloader = () => {
     return (
@@ -14,7 +13,7 @@ const Preloader = () => {
                 left: 0,
                 width: '100%',
                 height: '100vh',
-                background: '#0a0a0f',
+                background: '#23272f',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -22,59 +21,50 @@ const Preloader = () => {
                 flexDirection: 'column'
             }}
         >
-            <div style={{ position: 'relative', width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {/* Clean pulsing loader */}
+            <div style={{ position: 'relative', width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 {/* Outer Ring */}
                 <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                     style={{
                         position: 'absolute',
                         width: '100%',
                         height: '100%',
                         borderRadius: '50%',
                         border: '3px solid transparent',
-                        borderTopColor: 'var(--primary)',
-                        borderRightColor: 'var(--secondary)',
+                        borderTopColor: '#149eca',
+                        borderRightColor: '#a78bfa',
                     }}
                 />
 
-                {/* Inner Ring */}
+                {/* Inner dot */}
                 <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                    style={{
-                        position: 'absolute',
-                        width: '70%',
-                        height: '70%',
-                        borderRadius: '50%',
-                        border: '3px solid transparent',
-                        borderTopColor: 'var(--secondary)',
-                        borderLeftColor: 'var(--primary)',
-                    }}
-                />
-
-                {/* Center Icon */}
-                <motion.div
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                    <Zap size={40} color="var(--primary)" fill="var(--primary)" />
-                </motion.div>
+                    style={{
+                        width: '12px',
+                        height: '12px',
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #149eca, #a78bfa)',
+                    }}
+                />
             </div>
 
-            <motion.h2
-                animate={{ opacity: [0.5, 1, 0.5] }}
+            <motion.p
+                animate={{ opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
                 style={{
-                    marginTop: '2rem',
-                    color: 'var(--text-primary)',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    letterSpacing: '0.2em',
-                    fontSize: '1.2rem'
+                    marginTop: '1.5rem',
+                    color: 'var(--text-secondary)',
+                    fontFamily: 'Inter, sans-serif',
+                    letterSpacing: '0.05em',
+                    fontSize: '0.9rem',
+                    fontWeight: 500
                 }}
             >
-                INITIALIZING SYSTEM...
-            </motion.h2>
+                Loading...
+            </motion.p>
         </motion.div>
     );
 };

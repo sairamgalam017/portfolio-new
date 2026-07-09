@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Mail, Zap, Cpu } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Mail } from 'lucide-react';
 
 const Hero = () => {
-    // Mouse Parallax logic
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 2;
-            const y = (e.clientY / window.innerHeight - 0.5) * 2;
-            setMousePos({ x, y });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
-
-    // Scroll Parallax logic
-    const { scrollY } = useScroll();
-    const bgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
-    const textY = useTransform(scrollY, [0, 1000], ['0%', '15%']);
-
     return (
         <section id="hero" style={{
             minHeight: '100vh',
@@ -30,59 +12,33 @@ const Hero = () => {
             position: 'relative',
             overflow: 'hidden',
             padding: '8rem 0 4rem 0',
-            perspective: '1000px'
         }}>
-            {/* Background Grid with Scroll & Mouse Parallax - PCB Theme */}
-            <motion.div style={{
+            {/* Subtle gradient background washes */}
+            <div style={{
                 position: 'absolute',
-                top: '-20%', left: '-20%', right: '-20%', bottom: '-20%',
-                backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px)',
-                backgroundSize: '80px 80px',
-                zIndex: 0,
-                maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,0.8) 40%, transparent 80%)',
-                y: bgY,
-                x: mousePos.x * -20,
-                transform: `translateY(${mousePos.y * -20}px) translateZ(-100px)`,
-                transition: 'transform 0.1s ease-out, x 0.1s ease-out',
-                willChange: 'transform'
+                top: '-30%',
+                left: '-10%',
+                width: '50%',
+                height: '80%',
+                background: 'radial-gradient(ellipse, rgba(20, 158, 202, 0.08) 0%, transparent 70%)',
+                pointerEvents: 'none',
             }} />
-
-            {/* Electrical Pulse Animations */}
-            <motion.div
-                animate={{ x: ['-20vw', '100vw'] }}
-                transition={{ duration: 3, ease: "linear", repeat: Infinity, repeatDelay: 5 }}
-                style={{
-                    position: 'absolute',
-                    top: '30%',
-                    left: 0,
-                    width: '300px',
-                    height: '2px',
-                    background: 'linear-gradient(90deg, transparent, #00FF41, #00FF41, transparent)',
-                    boxShadow: '0 0 20px #00FF41, 0 0 10px #00FF41',
-                    zIndex: 0
-                }}
-            />
-            <motion.div
-                animate={{ y: ['-20vh', '100vh'] }}
-                transition={{ duration: 4, ease: "linear", repeat: Infinity, repeatDelay: 4 }}
-                style={{
-                    position: 'absolute',
-                    left: '80%',
-                    top: 0,
-                    width: '2px',
-                    height: '300px',
-                    background: 'linear-gradient(180deg, transparent, #00FF41, #00FF41, transparent)',
-                    boxShadow: '0 0 20px #00FF41, 0 0 10px #00FF41',
-                    zIndex: 0
-                }}
-            />
+            <div style={{
+                position: 'absolute',
+                bottom: '-20%',
+                right: '-10%',
+                width: '50%',
+                height: '80%',
+                background: 'radial-gradient(ellipse, rgba(167, 139, 250, 0.06) 0%, transparent 70%)',
+                pointerEvents: 'none',
+            }} />
 
             <div className="container" style={{
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: 'clamp(2rem, 5vw, 4rem)',
+                gap: 'clamp(2rem, 5vw, 5rem)',
                 zIndex: 10,
                 position: 'relative',
                 flexWrap: 'wrap-reverse'
@@ -90,110 +46,124 @@ const Hero = () => {
 
                 {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
                     style={{
                         flex: '1 1 500px',
                         textAlign: 'left',
-                        y: textY,
-                        x: mousePos.x * 10,
-                        transform: `translateY(${mousePos.y * 10}px)`,
-                        transition: 'transform 0.1s ease-out, x 0.1s ease-out',
-                        willChange: 'transform'
                     }}
                 >
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1rem', background: 'rgba(57, 255, 20, 0.05)', borderRadius: '4px', marginBottom: '1.5rem', border: '1px solid var(--border-color)', backdropFilter: 'blur(4px)' }}>
-                        <span style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%', boxShadow: '0 0 10px var(--primary-glow)' }}></span>
-                        <span style={{ color: 'var(--primary)', fontFamily: '"Share Tech Mono", monospace', fontSize: '0.9rem', fontWeight: '500', letterSpacing: '0.05em' }}>SYS.STATUS: ONLINE</span>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.4rem 1rem',
+                            background: 'rgba(20, 158, 202, 0.08)',
+                            borderRadius: '9999px',
+                            marginBottom: '1.5rem',
+                            border: '1px solid rgba(20, 158, 202, 0.15)',
+                        }}
+                    >
+                        <span style={{
+                            width: '7px',
+                            height: '7px',
+                            background: 'var(--accent-green)',
+                            borderRadius: '50%',
+                        }}></span>
+                        <span style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.85rem',
+                            fontWeight: '500',
+                        }}>
+                            Available for opportunities
+                        </span>
+                    </motion.div>
 
                     <h1 style={{
-                        fontSize: 'clamp(3rem, 6vw, 5rem)',
-                        fontWeight: '700',
+                        fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
+                        fontWeight: '800',
                         lineHeight: 1.1,
                         marginBottom: '1rem',
-                        color: '#ffffff',
-                        textShadow: '0 0 15px rgba(255, 255, 255, 0.2)'
+                        letterSpacing: '-0.03em',
                     }}>
-                        Galam Sairam
+                        <span style={{ color: 'var(--text-primary)' }}>Hi, I'm </span>
+                        <span className="gradient-text">Galam Sairam</span>
                     </h1>
 
                     <h3 style={{
-                        fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
+                        fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
                         color: 'var(--text-secondary)',
                         marginBottom: '1.5rem',
                         fontWeight: '500',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
-                        flexWrap: 'wrap'
+                        gap: '0.75rem',
+                        flexWrap: 'wrap',
+                        letterSpacing: '-0.01em',
                     }}>
-                        <span style={{ color: 'var(--primary)', textShadow: '0 0 10px var(--primary-glow)' }}>Electrical Engineer</span>
-                        <span style={{ color: 'var(--text-muted)' }}>//</span>
-                        <span style={{ color: 'var(--secondary)', textShadow: '0 0 10px var(--secondary-glow)' }}>IoT Enthusiast</span>
+                        <span style={{ color: 'var(--primary)' }}>Electrical Engineer</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.8em' }}>·</span>
+                        <span style={{ color: 'var(--secondary)' }}>IoT Enthusiast</span>
                     </h3>
 
                     <p style={{
-                        maxWidth: '600px',
+                        maxWidth: '550px',
                         fontSize: '1.1rem',
                         color: 'var(--text-secondary)',
                         lineHeight: '1.8',
                         marginBottom: '2.5rem',
-                        borderLeft: '2px solid #00FF41',
-                        paddingLeft: '1.5rem',
-                        background: 'linear-gradient(90deg, rgba(0,255,65,0.05), transparent)',
-                        paddingTop: '0.5rem',
-                        paddingBottom: '0.5rem',
-                        fontFamily: '"JetBrains Mono", monospace'
                     }}>
-                        Crafting <span style={{ color: '#00FF41', textShadow: '0 0 8px #00FF41' }}>intelligent hardware systems</span> and high-precision <span style={{ color: '#00FF41', textShadow: '0 0 8px #00FF41' }}>IoT devices</span>.
-                        Engineering the future of <span style={{ color: '#00FF41', textShadow: '0 0 8px #00FF41' }}>connected embedded technology</span> from silicon to software.
+                        Crafting <span style={{ color: 'var(--primary)', fontWeight: 600 }}>intelligent hardware systems</span> and
+                        high-precision <span style={{ color: 'var(--primary)', fontWeight: 600 }}>IoT devices</span>.
+                        Engineering the future of <span style={{ color: 'var(--secondary)', fontWeight: 600 }}>connected embedded technology</span> from silicon to software.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                         <motion.a
                             href="#projects"
                             style={{
-                                background: 'rgba(57, 255, 20, 0.1)',
-                                color: 'var(--primary)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '8px',
-                                fontWeight: '500',
-                                fontFamily: '"Share Tech Mono", monospace',
+                                background: 'var(--primary)',
+                                color: '#ffffff',
+                                padding: '0.85rem 2rem',
+                                borderRadius: '9999px',
+                                fontWeight: '600',
+                                fontSize: '0.95rem',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.5rem',
-                                border: '1px solid rgba(57, 255, 20, 0.4)',
-                                transition: 'all 0.3s ease',
-                                backdropFilter: 'blur(5px)',
-                                textTransform: 'uppercase'
+                                transition: 'all 0.2s ease',
+                                border: 'none',
                             }}
-                            whileHover={{ backgroundColor: 'rgba(57, 255, 20, 0.2)', boxShadow: '0 0 25px var(--primary-glow)', y: -2 }}
+                            whileHover={{ scale: 1.02, boxShadow: '0 4px 20px rgba(20, 158, 202, 0.35)' }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            View Projects <ArrowRight size={18} />
+                            View Projects <ArrowRight size={16} />
                         </motion.a>
 
                         <motion.a
                             href="#contact"
                             style={{
-                                background: 'var(--bg-card)',
-                                border: '1px solid var(--border-color)',
+                                background: 'transparent',
+                                border: '1px solid var(--border-hover)',
                                 color: 'var(--text-primary)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '8px',
-                                fontWeight: '500',
-                                fontFamily: '"Share Tech Mono", monospace',
+                                padding: '0.85rem 2rem',
+                                borderRadius: '9999px',
+                                fontWeight: '600',
+                                fontSize: '0.95rem',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.5rem',
-                                transition: 'all 0.3s ease',
-                                backdropFilter: 'blur(5px)',
-                                textTransform: 'uppercase'
+                                transition: 'all 0.2s ease',
                             }}
-                            whileHover={{ borderColor: 'var(--secondary)', color: '#fff', boxShadow: '0 0 20px var(--secondary-glow)', y: -2 }}
+                            whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            Contact Me <Mail size={18} />
+                            Contact Me <Mail size={16} />
                         </motion.a>
                     </div>
                 </motion.div>
@@ -201,103 +171,90 @@ const Hero = () => {
                 {/* Profile Image Column */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: [-8, 8, -8]
-                    }}
-                    transition={{
-                        opacity: { duration: 0.8, delay: 0.2 },
-                        scale: { duration: 0.8, delay: 0.2 },
-                        y: { duration: 7, ease: "easeInOut", repeat: Infinity }
-                    }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
                     style={{
                         flex: '1 1 300px',
                         display: 'flex',
                         justifyContent: 'center',
                         position: 'relative',
-                        x: mousePos.x * -8,
-                        transform: `translateY(${mousePos.y * -8}px)`,
-                        transition: 'transform 0.1s ease-out, x 0.1s ease-out',
-                        willChange: 'transform'
                     }}
                 >
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '350px', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        {/* External Copper Traces connecting to grid */}
-                        <div style={{ position: 'absolute', top: '50%', left: '-50px', width: '50px', height: '2px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)' }}></div>
-                        <div style={{ position: 'absolute', top: '30%', left: '-30px', width: '30px', height: '1px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)', opacity: 0.5 }}></div>
-                        <div style={{ position: 'absolute', top: '70%', left: '-30px', width: '30px', height: '1px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)', opacity: 0.5 }}></div>
-
-                        <div style={{ position: 'absolute', top: '50%', right: '-50px', width: '50px', height: '2px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)' }}></div>
-                        <div style={{ position: 'absolute', top: '30%', right: '-30px', width: '30px', height: '1px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)', opacity: 0.5 }}></div>
-                        <div style={{ position: 'absolute', top: '70%', right: '-30px', width: '30px', height: '1px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)', opacity: 0.5 }}></div>
-
-                        <div style={{ position: 'absolute', left: '50%', top: '-50px', width: '2px', height: '50px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)' }}></div>
-                        <div style={{ position: 'absolute', left: '50%', bottom: '-50px', width: '2px', height: '50px', background: 'var(--primary)', boxShadow: '0 0 5px var(--primary)' }}></div>
-
-                        {/* High-Precision IC Package Frame */}
+                    <motion.div
+                        animate={{ y: [-6, 6, -6] }}
+                        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+                        style={{ position: 'relative' }}
+                    >
+                        {/* Gradient ring behind image */}
                         <div style={{
                             position: 'absolute',
-                            width: '100%',
-                            height: '100%',
-                            border: '1px solid #00FF41',
-                            clipPath: 'polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%)',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            background: 'rgba(0, 255, 65, 0.05)',
-                            boxShadow: 'inset 0 0 30px rgba(0, 255, 65, 0.2)'
+                            inset: '-8px',
+                            borderRadius: '50%',
+                            background: 'linear-gradient(135deg, #149eca, #a78bfa, #f472b6)',
+                            opacity: 0.6,
+                            filter: 'blur(1px)',
+                        }} />
+
+                        {/* Image container */}
+                        <div style={{
+                            width: 'clamp(240px, 28vw, 320px)',
+                            height: 'clamp(240px, 28vw, 320px)',
+                            borderRadius: '50%',
+                            overflow: 'hidden',
+                            position: 'relative',
+                            border: '4px solid var(--bg-dark)',
                         }}>
+                            <img
+                                src="/profile.jpg"
+                                onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=Galam+Sairam&background=23272f&color=149eca&size=512"; }}
+                                alt="Galam Sairam"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
                         </div>
 
-                        {/* Image Container with IC Octagonal Shape */}
+                        {/* Floating decorative dots */}
                         <motion.div
-                            whileHover={{ scale: 1.05, filter: 'drop-shadow(0 0 30px #00FF41)' }}
-                            transition={{ duration: 0.3 }}
+                            animate={{ y: [-4, 4, -4] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             style={{
-                                width: '85%',
-                                height: '85%',
+                                position: 'absolute',
+                                top: '8%',
+                                right: '-5%',
+                                width: '40px',
+                                height: '40px',
                                 background: 'var(--bg-card)',
-                                position: 'relative',
-                                zIndex: 2,
-                                padding: '8px',
-                                clipPath: 'polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%)',
-                                border: '1px solid var(--border-color)',
-                                backdropFilter: 'blur(10px)'
-                            }}>
-                            <div style={{
-                                width: '100%',
-                                height: '100%',
-                                background: '#000',
-                                clipPath: 'polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%)',
-                                overflow: 'hidden'
-                            }}>
-                                <img
-                                    src="/profile.jpg"
-                                    onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=Galam+Sairam&background=050a05&color=00FF41&size=512"; }}
-                                    alt="Galam Sairam"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* Floating Tech Icons - PCB vibe */}
-                        <motion.div
-                            animate={{ y: [-5, 5, -5] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            style={{ position: 'absolute', top: '5%', right: '-5%', background: 'var(--bg-card)', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--primary)', zIndex: 3, backdropFilter: 'blur(5px)' }}
+                                borderRadius: '12px',
+                                border: '1px solid var(--border-hover)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: 'var(--shadow-card)',
+                            }}
                         >
-                            <Zap size={20} color="var(--primary)" strokeWidth={2} />
+                            <span style={{ fontSize: '1.2rem' }}>⚡</span>
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [5, -5, 5] }}
-                            transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
-                            style={{ position: 'absolute', bottom: '10%', left: '-5%', background: 'var(--bg-card)', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--secondary)', zIndex: 3, backdropFilter: 'blur(5px)' }}
+                            animate={{ y: [4, -4, 4] }}
+                            transition={{ duration: 4, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+                            style={{
+                                position: 'absolute',
+                                bottom: '10%',
+                                left: '-8%',
+                                width: '40px',
+                                height: '40px',
+                                background: 'var(--bg-card)',
+                                borderRadius: '12px',
+                                border: '1px solid var(--border-hover)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: 'var(--shadow-card)',
+                            }}
                         >
-                            <Cpu size={20} color="var(--secondary)" strokeWidth={2} />
+                            <span style={{ fontSize: '1.2rem' }}>🔧</span>
                         </motion.div>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

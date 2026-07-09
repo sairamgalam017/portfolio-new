@@ -1,48 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap');
 
 :root {
-  font-family: 'Share Tech Mono', 'Orbitron', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
   color-scheme: dark;
   color: var(--text-primary);
 
-  /* Hardware/PCB Theme Palette */
-  --bg-dark: #050a05;
-  --bg-card: rgba(10, 20, 10, 0.45);
-  --bg-card-hover: rgba(20, 40, 20, 0.6);
+  /* react.dev-inspired Dark Palette */
+  --bg-dark: #23272f;
+  --bg-wash: #1a1d23;
+  --bg-card: #343a46;
+  --bg-card-hover: #3e4451;
+  --bg-highlight: rgba(88, 196, 220, 0.08);
 
-  /* Neon Green Accents */
-  --primary: #39ff14;
-  --primary-glow: rgba(57, 255, 20, 0.5);
-  --secondary: #00ffff;
-  --secondary-glow: rgba(0, 255, 255, 0.5);
+  /* Brand Colors */
+  --primary: #149eca;
+  --primary-light: #58c4dc;
+  --primary-glow: rgba(20, 158, 202, 0.25);
+  --brand: #58c4dc;
+  --secondary: #a78bfa;
+  --secondary-glow: rgba(167, 139, 250, 0.2);
+  --accent-pink: #f472b6;
+  --accent-amber: #dba535;
+  --accent-green: #44a87a;
 
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
+  /* Text */
+  --text-primary: #f6f7f9;
+  --text-secondary: #99a1b3;
+  --text-muted: #5e687e;
 
-  /* Glassmorphism Structural UI */
-  --border-color: rgba(57, 255, 20, 0.2);
-  --glass-border: 1px solid rgba(57, 255, 20, 0.3);
+  /* Borders & Structure */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
 
-  --spacing-section: 8rem;
+  /* Gradients */
+  --gradient-blue: linear-gradient(135deg, #149eca 0%, #58c4dc 100%);
+  --gradient-purple: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  --gradient-brand: linear-gradient(to right, #149eca, #a78bfa);
+  --gradient-wash-left: linear-gradient(135deg, rgba(88, 196, 220, 0.06) 0%, rgba(167, 139, 250, 0.06) 50%, transparent 100%);
+  --gradient-wash-right: linear-gradient(135deg, transparent 0%, rgba(167, 139, 250, 0.06) 50%, rgba(244, 114, 182, 0.06) 100%);
+
+  --spacing-section: 7rem;
+
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-nav: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* High-Tech Futuristic Typography */
+/* Clean Modern Typography */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 html {
@@ -50,21 +69,11 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* PCB Subtle Pattern Background */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-dark);
-
-  /* Dots (Vias) and Tracks (Lines) */
-  background-image:
-    radial-gradient(circle at center, rgba(57, 255, 20, 0.15) 2px, transparent 2px),
-    linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px, 60px 60px, 60px 60px;
-  background-position: center top;
-  background-attachment: fixed;
   color: var(--text-primary);
   overflow-x: hidden;
 }
@@ -73,61 +82,50 @@ a {
   font-weight: 500;
   color: var(--primary);
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  position: relative;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #fff;
-  text-shadow: 0 0 15px var(--primary-glow);
+  color: var(--primary-light);
 }
 
 button,
 a.button-primary {
-  border-radius: 8px;
-  /* Slightly rounded for glassmorphism */
-  border: var(--glass-border);
-  padding: 0.75em 1.5em;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: 'Share Tech Mono', monospace;
-  background-color: rgba(57, 255, 20, 0.05);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  padding: 0.7em 1.6em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  background-color: transparent;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
 }
 
 button:hover,
 a.button-primary:hover {
-  background-color: rgba(57, 255, 20, 0.15);
-  box-shadow: 0 0 20px var(--primary-glow), inset 0 0 10px rgba(57, 255, 20, 0.2);
-  transform: translateY(-2px);
-  border-color: var(--primary);
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
 }
 
-/* Custom Scrollbar, tech style */
+/* Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
-  border-left: 1px solid var(--border-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(57, 255, 20, 0.3);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-  box-shadow: 0 0 10px var(--primary-glow);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Utility Classes */
@@ -138,59 +136,31 @@ a.button-primary:hover {
 }
 
 .section-title {
-  font-size: 2.5rem;
-  margin-bottom: 3.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
   text-align: left;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
-.section-title::before {
-  content: '[ ';
-  color: var(--primary);
-  margin-right: 15px;
-}
-
-.section-title::after {
-  content: ' ]';
-  color: var(--primary);
-  margin-left: 15px;
-  margin-right: 20px;
-}
-
-/* Glassmorphism Cards with Neon Green Glowing Borders */
+/* Clean Modern Cards */
 .card {
   background: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: var(--glass-border);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* PCB Trace Lines on Cards (Subtle hardware detail) */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  opacity: 0.3;
-}
-
 .card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--primary-glow), inset 0 0 15px rgba(57, 255, 20, 0.1);
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
   background: var(--bg-card-hover);
 }
 
@@ -198,7 +168,6 @@ a.button-primary:hover {
 .mobile-toggle {
   display: block;
   padding: 0.5rem;
-  color: var(--primary);
 }
 
 .desktop-menu {
@@ -212,13 +181,30 @@ a.button-primary:hover {
 
   .desktop-menu {
     display: flex !important;
-    gap: 2.5rem;
+    gap: 0.5rem;
   }
 }
 
 section {
   position: relative;
   z-index: 1;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle gradient section backgrounds */
+.section-gradient-left {
+  background: var(--gradient-wash-left);
+}
+
+.section-gradient-right {
+  background: var(--gradient-wash-right);
 }
 
 @media (max-width: 768px) {
@@ -232,6 +218,6 @@ section {
 
   .section-title {
     font-size: 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 }
