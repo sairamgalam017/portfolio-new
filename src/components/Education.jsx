@@ -23,7 +23,7 @@ const educationData = [
         title: 'SSC',
         institution: 'Z.P.H. SCHOOL, NIDAMANURU',
         period: 'Completed',
-        grade: 'Satisfactory',
+        grade: '7.7 CGPA',
         icon: <GraduationCap />,
         color: '#f472b6',
     }
@@ -40,8 +40,8 @@ const experienceData = [
         images: ['/industrial-visit.jpeg']
     },
     {
-        title: 'Internship Experience',
-        institution: 'Internship',
+        title: 'INTERN EXPE in GENCO',
+        institution: 'GENCO',
         period: 'Recent',
         description: 'Gained practical experience in the field.',
         icon: <Briefcase />,
@@ -59,7 +59,7 @@ const experienceData = [
     },
     {
         title: 'IoT & Embedded Systems Workshop',
-        institution: 'SRC e-Solutions × ALIET EEE Dept.',
+        institution: 'MSME × ALIET EEE Dept.',
         period: 'Sep 08–13, 2025',
         description: 'Completed a week-long skill course on "Building IoT Solutions with Embedded Systems" — programmed STM32 boards, built a smart irrigation IoT prototype with soil sensors and a water pump.',
         icon: <Briefcase />,

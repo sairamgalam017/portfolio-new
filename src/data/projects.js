@@ -5,14 +5,14 @@ export const projects = [
         title: 'Advanced Energy Meter',
         shortDescription: 'An IoT-based smart energy meter that allows real-time monitoring of energy consumption and automated billing alerts.',
         longDescription: 'This advanced energy meter leverages IoT technology to provide a comprehensive solution for monitoring electrical consumption. Unlike traditional meters, it offers real-time data tracking, automated billing calculations, and alerts for abnormal usage patterns. It empowers users to manage their electricity consumption effectively and helps providers detect theft or leakage.',
-        tech: ['IoT', 'Arduino', 'GSM Module', 'Sensors'],
+        tech: ['IoT', 'PZEM-004T', 'ESP-8266', 'Blynk Cloud'],
         features: [
-            'Real-time energy monitoring via mobile app/dashboard',
-            'Automated SMS alerts for billing and high usage',
+            'Real-time energy monitoring via Blynk Cloud app/dashboard',
+            'Automated alerts for billing and high usage',
             'Tamper detection and improved security',
             'Remote load control capabilities'
         ],
-        challenges: 'Integrating multiple sensors while maintaining low power consumption was a significant challenge. Ensuring reliable GSM connectivity in various signal conditions also required optimizing the antenna placement and error handling in the code.',
+        challenges: 'Integrating the PZEM-004T sensor accurately while maintaining reliable Wi-Fi connectivity with the ESP-8266 in various conditions required optimizing the code and robust error handling.',
         image: '/projects/advanced-energy-meter.jpeg',
         gallery: [], // Add more images here if available
         github: '#',

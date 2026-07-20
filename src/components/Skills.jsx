@@ -20,34 +20,40 @@ const skills = [
         subskills: ['DC-DC Converters', 'Inverters / Rectifiers', 'Gate Driver Design', 'Thermal Management']
     },
     {
-        id: 3, name: 'Control Systems', icon: <Settings />, pct: 75,
+        id: 3, name: 'Analog Circuits', icon: <Settings />, pct: 75,
         color: '#58c4dc', category: 'Engineering',
-        description: 'Mathematical modeling of physical systems, PID controller design, state-space modeling, and stability checks.',
-        subskills: ['Feedback Loops', 'PID Controllers', 'State-Space Representation', 'Bode/Nyquist Stability']
+        description: 'Design and analysis of analog electronic circuits including amplifiers, filters, oscillators, and signal conditioning.',
+        subskills: ['Op-Amp Circuits', 'Active & Passive Filters', 'Signal Conditioning', 'Transistor Biasing']
     },
     {
-        id: 4, name: 'Math Modelling', icon: <Calculator />, pct: 70,
+        id: 4, name: 'Digital Electronics', icon: <Cpu />, pct: 75,
         color: '#f472b6', category: 'Engineering',
-        description: 'Developing mathematical and numerical simulation models of complex dynamic systems and engineering processes.',
-        subskills: ['MATLAB / Simulink', 'Differential Equations', 'Numerical Methods', 'Optimization Algorithms']
+        description: 'Design of combinational and sequential logic circuits, FPGA programming, and digital system architecture.',
+        subskills: ['Logic Gates & Boolean Algebra', 'Flip-Flops & Counters', 'FPGA / CPLD Design', 'Microcontroller Interfacing']
     },
     {
-        id: 5, name: 'C Language', icon: <Terminal />, pct: 65,
-        color: '#dba535', category: 'Software',
+        id: 5, name: 'MATLAB / Simulink', icon: <Calculator />, pct: 70,
+        color: '#e06c2e', category: 'Software',
+        description: 'Mathematical modelling, system simulation, and data analysis using MATLAB scripting and Simulink block diagrams.',
+        subskills: ['System Simulation', 'Differential Equations', 'Control System Toolbox', 'Power System Modelling']
+    },
+    {
+        id: 6, name: 'Internet of Things', icon: <Globe />, pct: 65,
+        color: '#dba535', category: 'Engineering',
+        description: 'Building IoT solutions with sensor networks, embedded controllers, cloud connectivity, and real-time data monitoring.',
+        subskills: ['Sensor Integration', 'Arduino / ESP32', 'MQTT & Cloud Platforms', 'Real-Time Monitoring']
+    },
+    {
+        id: 7, name: 'C Programming', icon: <Terminal />, pct: 65,
+        color: '#44a87a', category: 'Software',
         description: 'Low-level firmware development, microcontroller peripheral configuration, and memory-constrained coding.',
         subskills: ['Embedded Systems', 'Pointer Arithmetic', 'Memory Optimization', 'Register-level Coding']
     },
     {
-        id: 6, name: 'Python', icon: <Code />, pct: 60,
-        color: '#44a87a', category: 'Software',
-        description: 'Writing automation scripts, custom data visualization pipelines, and performing custom scientific calculations.',
-        subskills: ['Data Analytics', 'NumPy / SciPy / Pandas', 'Automation Scripts', 'Machine Learning Basics']
-    },
-    {
-        id: 7, name: 'Assembly Language', icon: <Cpu />, pct: 60,
+        id: 8, name: 'Basic Python', icon: <Code />, pct: 60,
         color: '#99a1b3', category: 'Software',
-        description: 'Bare-metal timing critical routines, hardware-level diagnostic debugging, and system architecture studies.',
-        subskills: ['ISA Architecture', 'Timing Optimization', 'Interrupt Services', 'Hardware Interfacing']
+        description: 'Writing automation scripts, data visualization, and performing scientific calculations with Python libraries.',
+        subskills: ['Data Analytics', 'NumPy / SciPy / Pandas', 'Automation Scripts', 'Matplotlib Visualization']
     }
 ];
 
